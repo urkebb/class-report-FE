@@ -1,3 +1,7 @@
+<ng-container *ngIf="this.spinnerService.show">
+  <app-spinner></app-spinner>
+</ng-container>
+
 <main class="main-layout">
   <router-outlet></router-outlet>
 </main>

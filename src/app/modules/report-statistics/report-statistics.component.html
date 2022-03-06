@@ -1,3 +1,7 @@
+<ng-container *ngIf="this.loading">
+  <app-spinner></app-spinner>
+</ng-container>
+
 <ng-container *ngIf="this.statistics">
   <app-modal
     (handleClose)="hancleClick()"

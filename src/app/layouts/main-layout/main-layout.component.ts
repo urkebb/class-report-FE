@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SpinnerService } from 'src/app/_services/spinner.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -6,5 +7,5 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-layout.component.scss'],
 })
 export class MainLayoutComponent {
-  constructor() {}
+  constructor(public spinnerService: SpinnerService) {}
 }

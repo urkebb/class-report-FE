@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Report } from 'src/app/models/report.model';
 import { ReportService } from 'src/app/_services/report.service';
+import { SpinnerService } from 'src/app/_services/spinner.service';
 
 @Component({
   selector: 'app-report',
@@ -21,9 +22,12 @@ export class ReportComponent {
     error: false,
     message: '',
   };
-  loading: boolean = false;
 
-  constructor(public reportService: ReportService, private fb: FormBuilder) {
+  constructor(
+    public reportService: ReportService,
+    private fb: FormBuilder,
+    public spinnerService: SpinnerService
+  ) {
     this.form = this.fb.group({
       userID: [null],
     });
@@ -68,7 +72,7 @@ export class ReportComponent {
   // ? HELPER FUNCTION
 
   fetchReports() {
-    this.loading = true;
+    this.spinnerService.show = true;
     if (this.searchedByUserId) {
       this.reportService
         .searchByUserID(
@@ -77,7 +81,7 @@ export class ReportComponent {
           this.reportsPerPage
         )
         .subscribe((res) => {
-          this.loading = false;
+          this.spinnerService.show = false;
           if (!res.reports.length) {
             this.searchError = {
               error: true,
@@ -98,7 +102,7 @@ export class ReportComponent {
       this.reportService
         .getAll(this.page, this.reportsPerPage)
         .subscribe((res) => {
-          this.loading = false;
+          this.spinnerService.show = false;
           this.reports = res.reports;
 
           this.pageCount = Math.ceil(res.reportsCount / this.reportsPerPage);

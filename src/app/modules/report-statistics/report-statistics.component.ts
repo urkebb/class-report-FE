@@ -12,12 +12,16 @@ export class ReportStatisticsComponent implements OnInit {
   @Input() show: boolean = false;
   @Output() handleCloseStatistics: EventEmitter<void> = new EventEmitter();
 
+  loading: boolean = false;
+
   statistics!: Statistics;
 
   constructor(private reportService: ReportService) {}
 
   ngOnInit(): void {
+    this.loading = true;
     this.reportService.getStatistcs().subscribe((res) => {
+      this.loading = false;
       this.statistics = {
         averageProgress: res.statistics.averageProgress[0].averageProgress,
         correctNumbersPercent: res.statistics.correctNumbersPercent[0].percent,
