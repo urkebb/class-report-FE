@@ -21,6 +21,7 @@ export class ReportComponent {
     error: false,
     message: '',
   };
+  loading: boolean = false;
 
   constructor(public reportService: ReportService, private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -67,6 +68,7 @@ export class ReportComponent {
   // ? HELPER FUNCTION
 
   fetchReports() {
+    this.loading = true;
     if (this.searchedByUserId) {
       this.reportService
         .searchByUserID(
@@ -75,6 +77,7 @@ export class ReportComponent {
           this.reportsPerPage
         )
         .subscribe((res) => {
+          this.loading = false;
           if (!res.reports.length) {
             this.searchError = {
               error: true,
@@ -95,6 +98,7 @@ export class ReportComponent {
       this.reportService
         .getAll(this.page, this.reportsPerPage)
         .subscribe((res) => {
+          this.loading = false;
           this.reports = res.reports;
 
           this.pageCount = Math.ceil(res.reportsCount / this.reportsPerPage);

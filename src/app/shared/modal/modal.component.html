@@ -1,26 +1,28 @@
 <div *ngIf="this.show" class="overlay">
-  <app-card classList="modal-card">
-    <div
-      [ngStyle]="{
-        background: this.error ? 'var(--bs-danger)' : 'var(--bs-primary)'
-      }"
-      class="modal--header p-3"
-    >
-      <h2 class="mb-0">{{ this.heading }}</h2>
-    </div>
-
-    <div [class]="'modal--body p-3'">
-      <ng-content></ng-content>
-    </div>
-    <div class="d-flex justify-content-end p-3">
-      <button
-        (click)="handleClick()"
-        class="btn"
-        [ngClass]="{ 'btn-danger': this.error, 'btn-primary': !this.error }"
-        type="button"
+  <div class="modal">
+    <app-card classList="modal-card">
+      <div
+        [ngStyle]="{
+          background: this.error ? 'var(--bs-danger)' : 'var(--bs-primary)'
+        }"
+        class="modal--header p-3"
       >
-        Close
-      </button>
-    </div>
-  </app-card>
+        <h2 class="mb-0">{{ this.heading }}</h2>
+      </div>
+
+      <div [class]="'modal--body p-3'">
+        <ng-content></ng-content>
+      </div>
+      <div class="d-flex justify-content-end p-3">
+        <button
+          (click)="handleClick()"
+          class="btn"
+          [ngClass]="{ 'btn-danger': this.error, 'btn-primary': !this.error }"
+          type="button"
+        >
+          Close
+        </button>
+      </div>
+    </app-card>
+  </div>
 </div>
