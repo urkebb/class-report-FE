@@ -1,0 +1,18 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities.scss";
+
+.main-layout {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0.5rem;
+
+  @include media-breakpoint-up(sm) {
+    padding: 2rem;
+  }
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url("../../../assets/gradient-navy-blue-digital-grid-wallpaper.jpg");
+}

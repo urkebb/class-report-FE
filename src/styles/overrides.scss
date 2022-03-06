@@ -1,0 +1,19 @@
+// table
+.table {
+  tr {
+    border-color: transparentize($accent-color, 0.8);
+    vertical-align: middle;
+  }
+
+  thead {
+    &:first-child {
+      border-bottom: 2px solid transparentize($accent-color, 0.3);
+    }
+  }
+
+  td,
+  th {
+    min-width: 150px;
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,89 @@
+<ng-container *ngIf="this.showStatistics">
+  <app-report-statistics
+    [show]="this.showStatistics"
+    (handleCloseStatistics)="this.showStatistics = false"
+  ></app-report-statistics>
+</ng-container>
+
+<ng-container *ngIf="this.searchError">
+  <app-modal
+    [error]="this.searchError.error"
+    [show]="this.searchError.error"
+    heading="No User"
+    (handleClose)="
+      this.searchError = {
+        error: false,
+        message: ''
+      }
+    "
+  >
+    <h5>There is no user with the provided ID</h5>
+  </app-modal>
+</ng-container>
+
+<main *ngIf="this.reports?.length">
+  <h1
+    class="mb-5 border-bottom border-white text-center pb-2"
+    style="color: white"
+  >
+    CLASS REPORT
+  </h1>
+
+  <form
+    [formGroup]="this.form"
+    (ngSubmit)="handleSubmit()"
+    class="d-flex flex-column flex-md-row justify-content-between align-items-stretch align-items-md-center mb-4"
+  >
+    <app-input placeholder="User ID..." controlName="userID"></app-input>
+  </form>
+
+  <div class="card table-container table-responsive mb-4 rounded-3">
+    <table class="table table-hover mb-0">
+      <thead>
+        <tr>
+          <th scope="col">USER ID</th>
+          <th scope="col">EXERCISE ID</th>
+          <th scope="col">SUBJECT</th>
+          <th scope="col">DOMAIN</th>
+          <th scope="col">CORRECT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let report of this.reports">
+          <th scope="col">{{ report.UserId }}</th>
+          <td scope="col">{{ report.ExerciseId }}</td>
+
+          <td>{{ report.Subject }}</td>
+          <td>
+            {{ report.Domain }}
+          </td>
+          <td>{{ report.Correct }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info d-flex justify-content-between align-items-start flex-wrap">
+    <div class="d-flex gap-4">
+      <app-pagination
+        (handleNext)="this.handleNextPage()"
+        (handlePrevious)="this.handlePreviousPage()"
+      ></app-pagination>
+
+      <app-dropdown
+        *ngIf="this.dropdownItems?.length"
+        [items]="this.dropdownItems"
+        (clicked)="handleDropdown($event)"
+        text="Page"
+      ></app-dropdown>
+
+      <h4 class="mb-0" style="color: white">
+        {{ this.page }}/{{ this.pageCount - 1 }}
+      </h4>
+    </div>
+
+    <button (click)="handleStatistics()" class="btn btn-primary" type="button">
+      Statistics
+    </button>
+  </div>
+</main>

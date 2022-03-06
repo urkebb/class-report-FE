@@ -1,0 +1,21 @@
+<ng-container *ngIf="this.statistics">
+  <app-modal
+    (handleClose)="hancleClick()"
+    [show]="this.show"
+    heading="STATISTICS"
+  >
+    <div class="d-flex flex-column gap-3">
+      <app-card classList="d-flex flex-row justify-content-between">
+        <h5>Correct answers</h5>
+        <h5>{{ this.statistics.correctNumbersPercent | number: "1.2-2" }}%</h5>
+      </app-card>
+
+      <app-card classList="d-flex flex-row justify-content-between">
+        <h5>Average progress</h5>
+        <h5>
+          {{ this.statistics.averageProgress | number: "1.2-2" }}
+        </h5>
+      </app-card>
+    </div>
+  </app-modal>
+</ng-container>

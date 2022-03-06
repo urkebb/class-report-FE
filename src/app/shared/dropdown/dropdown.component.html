@@ -1,0 +1,16 @@
+<div class="dropdown">
+  <button
+    class="btn btn-primary dropdown-toggle"
+    type="button"
+    id="dropdownMenuButton1"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    {{ this.text }}
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li (click)="handleClick(item)" *ngFor="let item of this.items">
+      <a class="dropdown-item">{{ item }}</a>
+    </li>
+  </ul>
+</div>

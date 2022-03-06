@@ -1,0 +1,36 @@
+@import "node_modules/bootstrap/scss/bootstrap-utilities.scss";
+@import "../../../styles/variables.scss";
+
+.overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.7);
+
+  app-card {
+    ::ng-deep {
+      .modal-card {
+        padding: 0 !important;
+        width: 90vw;
+
+        @include media-breakpoint-up(sm) {
+          width: 100%;
+          min-width: 500px;
+        }
+      }
+    }
+  }
+
+  .modal--header {
+    color: white;
+    // background: $primary-color;
+    border-top-left-radius: $border-radius-lg;
+    border-top-right-radius: $border-radius-lg;
+  }
+}
