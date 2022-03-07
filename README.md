@@ -1,7 +1,7 @@
 # Prerequisites
 
-Make sure you have installed Node which you can find [here](https://nodejs.org/en/download/) and Angular CLI which you can find [here](https://github.com/angular/angular-cli), and this project is using version 13.1.2.
-When you do all the above just run npm install to install all the packages.
+Make sure you have installed Node which you can find [here](https://nodejs.org/en/download/), this project using version 14.15.3, and Angular CLI which you can find [here](https://github.com/angular/angular-cli), this project is using version 13.1.2.
+When you do all the above just run `npm install` to install all the packages.
 
 ## Development server
 
@@ -14,6 +14,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 - Clicking on statistics button, modal will apper with correct answers percent and average progress so teacher can know how well they did exercices and how far his class has progressed.
 - Also if teacher want to see informations for particular student, he can search for a user.
 - Because of a large amaunt of data, this application has a pagination, so in one database call teacher get certain number of records, and this greatly improves application performance.
+- Also angular eslint is added here, and his duty is to keep code uniform, clean and to find problematic patterns, when you want to lint code you just execute `npm run lint`.
 
 ## Further help
 
